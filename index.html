@@ -27,7 +27,7 @@
 						<p>{{calendar.month}} {{calendar.year}}</p>
 					</header>
 					<ul>
-						<li ng-repeat="day in calendar.days" ng-class="{'locked' : day.locked, 'holiday': day.holiday, 'weekend': day.dayOfWeek > 4 }">{{!day.locked ? day.value : null}}</li>
+						<li ng-repeat="day in calendar.days" ng-class="{'locked' : day.locked, 'holiday': day.holiday, 'weekend': day.dayOfWeek == 0 || day.dayOfWeek == 6 }">{{!day.locked ? day.value : null}}</li>
 					<ul>
 				</section>
 			</article>

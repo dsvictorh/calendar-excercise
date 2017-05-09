@@ -42,7 +42,7 @@ app.controller('CalendarController', ['$scope', 'HolidayService', function($scop
 			return;
 		}
 
-		//Load holidays
+		//Load holidays, cannot keep developing without putting a server because of cross site scripting
 		/*HolidayService.getHolidays({
 			year: dates[0].getFullYear(),
 			code: code
@@ -75,7 +75,6 @@ app.controller('CalendarController', ['$scope', 'HolidayService', function($scop
 			var holidayIndex = holidays.findIndex(function(item){ return item.date == dates[i].getFullYear() + "-" + (dates[i].getMonth() + 1) + "-" + dates[i].getDate()});
 			calendar.days.push({
 				value: dates[i].getDate(),
-				weekend: dates[i].getDay() > 4,
 				dayOfWeek: dates[i].getDay(),
 				holiday: holidayIndex >= 0 ? holidays[holidayIndex].description : null,
 			});
@@ -87,7 +86,7 @@ app.controller('CalendarController', ['$scope', 'HolidayService', function($scop
 			var calendarLastDay = $scope.calendars[i].days.length - 1;
 			var calendarStart = $scope.calendars[i].days[0].dayOfWeek;
 			var calendarEnd = $scope.calendars[i].days[calendarLastDay].dayOfWeek;
-			
+
 			//Add necessary days of the week behind the start of the calendar
 			//to fill to the start of the week (Sunday)
 			for(var j = 0; j < calendarStart; j++){
