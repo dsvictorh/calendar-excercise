@@ -1,0 +1,83 @@
+@import 'reset.less';
+
+//Functions
+.clear(@side){
+	&:after{
+		content: '';
+		display: table;
+		clear: @side;
+	}
+	
+}
+
+
+//Color Palette
+@color-green: #16b769;
+@color-gray: #7c7c7c;
+@color-orange: #ba6f0e;
+@color-yellow: #d8d100;
+@color-white: #fff;
+@color-black: #000;
+
+html{
+	font-size: 10px;
+}
+
+.calendar{
+	width: 20%;
+	margin: 0 auto;
+	min-width: 480px;
+	text-align: center;
+
+	input{
+		display: block;
+		margin: 5px auto;
+		width: ~'calc(100% - 2px)';
+		padding: 5px;
+		box-sizing: border-box;
+		border-width: 1px;
+	}
+
+	section{
+	    margin: 50px 0;
+	}
+
+	header ul li{
+		background: none;
+		color: @color-black;
+	}
+
+	p{
+		font-size: 3rem;
+		text-align: center;
+		margin: 5px 0;
+	}
+
+	ul{
+		.clear(both);
+		text-align: center;
+
+		li{
+			float: left;
+			width: ~'calc(14.28% - 2px)';
+			border: 1px solid @color-white;
+			height: 2rem;
+			font-size: 2rem;
+			color: @color-white;
+			background: @color-green;
+			cursor: default;
+
+			&.weekend{
+				background: @color-yellow;
+			}
+
+			&.holiday{
+				background: @color-orange;
+			}
+
+			&.locked{
+				background: @color-gray;
+			}
+		}
+	}
+}

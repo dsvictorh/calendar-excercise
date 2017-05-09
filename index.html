@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Calendar - Victor Herrera</title>
+		<link rel="stylesheet" href="assets/css/site.css" />
+	</head>
+	<body ng-app="calendar">
+		<main ng-controller="CalendarController">
+			<article class="calendar">
+				<form ng-submit="loadCalendar()">
+					<input type="text" name="date" ng-model="filter.date" placeholder="Start Date" />
+					<input type="text" name="days" ng-model="filter.days" placeholder="Days" />
+					<input type="text" name="code" ng-model="filter.code" placeholder="Code" />
+					<input type="submit" value="Load" />
+				</form>
+				<section ng-repeat="calendar in calendars">
+					<header>
+						<ul>
+							<li>S</li>
+							<li>M</li>
+							<li>T</li>
+							<li>W</li>
+							<li>T</li>
+							<li>F</li>
+							<li>S</li>
+						</ul>
+						<p>{{calendar.month}} {{calendar.year}}</p>
+					</header>
+					<ul>
+						<li ng-repeat="day in calendar.days" ng-class="{'locked' : day.locked, 'holiday': day.holiday, 'weekend': day.dayOfWeek > 4 }">{{!day.locked ? day.value : null}}</li>
+					<ul>
+				</section>
+			</article>
+		</main>
+		<script src="assets/lib/jquery.js"></script>
+		<script src="assets/lib/angular.js"></script>
+		<script src="assets/js/utils.js"></script>
+		<script src="assets/js/site.js"></script>
+	</body>
+</html>
